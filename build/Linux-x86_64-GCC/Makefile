@@ -36,10 +36,12 @@ SPECIALIZE_TYPE = 8086-SSE
 
 SOFTFLOAT_OPTS = -DINLINE_LEVEL=5 -DSOFTFLOAT_FAST_DIV64TO32
 
+GCC = gcc-4.9
+
 DELETE = rm -f
 C_INCLUDES = -I. -I$(SOURCE_DIR)/$(SPECIALIZE_TYPE) -I$(SOURCE_DIR)/include
 COMPILE_C = \
-  gcc -c -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 \
+  $(GCC) -c -Werror-implicit-function-declaration -DSOFTFLOAT_FAST_INT64 \
     $(SOFTFLOAT_OPTS) $(C_INCLUDES) -O2 -o $@
 MAKELIB = ar crs $@
 
